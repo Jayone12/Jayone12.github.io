@@ -10,14 +10,14 @@
     <meta name="author" content="Jay Park">
     
     
-        <link rel="icon" href="http://example.com/assets/images/bigjay.jpg">
+        <link rel="icon" href="https://jayone12.github.io/assets/images/bigjay.jpg">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg"},"articleBody":"변수 선언은 변수를 생성하는 것을 말한다. 즉 값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 메모리 공간을 연결하는 준비 단계.\n\n\n변수를 선언을 하기 위해서는 var, let, const가 있는데 이 중 var에 대해 포스팅 한다.\nvarES6(ECMAScript 2015) 도입 이전까지 var 명령어는 자바스크립트에서 변수를 선언할 수 있는 유일한 명령어였다.\n1var number; // 변수 이름(number) 선언\n\nnumber의 이름으로 변수를 선언함으로써 메모리 공간을 확보하였다.값이 할당되어 있지 않아 초기화 상태로 값은 undefined 다.\n값 할당변수에 값을 할당할 때는 연산자 =를 사용한다. 할당 연사자는 우변의 값을 좌변의 변수에 할당한다.\n12345var number; // 변수 선언number = 10; // 값 할당// 또는 아래와 같이 하나의 문(statement)으로 단축 표현 가능var number = 10;\n\n이 때 하나의 문으로 작성을 하더라도 변수 선언과 값의 할당을 2개의 문으로 나누어 각각 실행한다.\n123456console.log(number); // undefinedvar number; // 변수 선언number = 10; // 값 할당console.log(number); // 10\n\n자바스크립트는 인터프리터 언어로 위에서 아래로 코드를 순차적으로 진행하는데 위 코드를 보면 변수가 선언되기 전에 console.log()를 사용하여 변수 값을 확인하였다.이 때 오류가 날 것 같지만 변수 선언의 경우 런타임 이전에 단계에서 먼저 실행이 되기 때문에 오류가 발생하지 않는다.\n이처럼 변수 선언이 코드 상위로 끌어 올려진 것처럼 동작하는 것을 변수 호이스팅(variable hoisting)이라고 한다.\n❗️변수 선언은 런타임 이전에 실행되며, 값의 할당은 런타임에 실행된다.\n","dateCreated":"2022-04-26T15:24:59+09:00","dateModified":"2022-04-26T16:09:25+09:00","datePublished":"2022-04-26T15:24:59+09:00","description":"변수 선언은 변수를 생성하는 것을 말한다. 즉 값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 메모리 공간을 연결하는 준비 단계.","headline":"JavaScript 시작 (2) - 변수(2) - var","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"},"publisher":{"@type":"Organization","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg","logo":{"@type":"ImageObject","url":"bigjay.jpg"}},"url":"http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/","keywords":"Front-end, JavaScript"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg"},"articleBody":"변수 선언은 변수를 생성하는 것을 말한다. 즉 값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 메모리 공간을 연결하는 준비 단계.\n\n\n변수를 선언을 하기 위해서는 var, let, const가 있는데 이 중 var에 대해 포스팅 한다.\nvarES6(ECMAScript 2015) 도입 이전까지 var 명령어는 자바스크립트에서 변수를 선언할 수 있는 유일한 명령어였다.\n1var number; // 변수 이름(number) 선언\n\nnumber의 이름으로 변수를 선언함으로써 메모리 공간을 확보하였다.값이 할당되어 있지 않아 초기화 상태로 값은 undefined 다.\n값 할당변수에 값을 할당할 때는 연산자 =를 사용한다. 할당 연사자는 우변의 값을 좌변의 변수에 할당한다.\n12345var number; // 변수 선언number = 10; // 값 할당// 또는 아래와 같이 하나의 문(statement)으로 단축 표현 가능var number = 10;\n\n이 때 하나의 문으로 작성을 하더라도 변수 선언과 값의 할당을 2개의 문으로 나누어 각각 실행한다.\n123456console.log(number); // undefinedvar number; // 변수 선언number = 10; // 값 할당console.log(number); // 10\n\n자바스크립트는 인터프리터 언어로 위에서 아래로 코드를 순차적으로 진행하는데 위 코드를 보면 변수가 선언되기 전에 console.log()를 사용하여 변수 값을 확인하였다.이 때 오류가 날 것 같지만 변수 선언의 경우 런타임 이전에 단계에서 먼저 실행이 되기 때문에 오류가 발생하지 않는다.\n이처럼 변수 선언이 코드 상위로 끌어 올려진 것처럼 동작하는 것을 변수 호이스팅(variable hoisting)이라고 한다.\n❗️변수 선언은 런타임 이전에 실행되며, 값의 할당은 런타임에 실행된다.\n","dateCreated":"2022-04-26T15:24:59+09:00","dateModified":"2022-04-26T16:09:25+09:00","datePublished":"2022-04-26T15:24:59+09:00","description":"변수 선언은 변수를 생성하는 것을 말한다. 즉 값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 메모리 공간을 연결하는 준비 단계.","headline":"JavaScript 시작 (2) - 변수(2) - var","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"},"publisher":{"@type":"Organization","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg","logo":{"@type":"ImageObject","url":"bigjay.jpg"}},"url":"https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/","keywords":"Front-end, JavaScript"}</script>
     <meta name="description" content="변수 선언은 변수를 생성하는 것을 말한다. 즉 값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 메모리 공간을 연결하는 준비 단계.">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="JavaScript 시작 (2) - 변수(2) - var">
-<meta property="og:url" content="http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/index.html">
+<meta property="og:url" content="https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/index.html">
 <meta property="og:site_name" content="BigBoy Club">
 <meta property="og:description" content="변수 선언은 변수를 생성하는 것을 말한다. 즉 값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 메모리 공간을 연결하는 준비 단계.">
 <meta property="og:locale" content="ko_KR">
@@ -32,7 +32,7 @@
         
     
     
-        <meta property="og:image" content="http://example.com/assets/images/bigjay.jpg"/>
+        <meta property="og:image" content="https://jayone12.github.io/assets/images/bigjay.jpg"/>
     
     
     
@@ -359,7 +359,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
                     title="Facebook에 공유하기"
                     aria-label="Facebook에 공유하기"
                 >
@@ -372,7 +372,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
                     title="Twitter에 공유하기"
                     aria-label="Twitter에 공유하기"
                 >
@@ -385,7 +385,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
                     title="Google+에 공유하기"
                     aria-label="Google+에 공유하기"
                 >
@@ -474,7 +474,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
                     title="Facebook에 공유하기"
                     aria-label="Facebook에 공유하기"
                 >
@@ -487,7 +487,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
                     title="Twitter에 공유하기"
                     aria-label="Twitter에 공유하기"
                 >
@@ -500,7 +500,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
                     title="Google+에 공유하기"
                     aria-label="Google+에 공유하기"
                 >
@@ -534,7 +534,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
                         aria-label="Facebook에 공유하기"
                     >
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
@@ -547,7 +547,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://twitter.com/intent/tweet?text=http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                        href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
                         aria-label="Twitter에 공유하기"
                     >
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
@@ -560,7 +560,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://plus.google.com/share?url=http://example.com/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                        href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
                         aria-label="Google+에 공유하기"
                     >
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>

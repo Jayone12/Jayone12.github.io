@@ -10,14 +10,14 @@
     <meta name="author" content="Jay Park">
     
     
-        <link rel="icon" href="http://example.com/assets/images/bigjay.jpg">
+        <link rel="icon" href="https://jayone12.github.io/assets/images/bigjay.jpg">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg"},"articleBody":"자바스크립트의 경우 다른 언어와 다르게 하나의 숫자 타입(number type)만 존재한다. ECMAScript 사양에 따르면 숫자 타입의 값은 배정밀도 64비트 부동소수점 형식을 따른다.즉, 모든 수를 실수로 처리하며, 정수만 표현하기 위한 데이터 타입은 별도로 존재하지 않는\n\n\n1234// 모두 숫자 타입var integer = 10; // 정수var double = 10.12; // 실수var negative = -20; // 음의 정수\n\n자바스크립트는 2진수, 8진수, 16진수를 표현하기 위한 데이터 타입을 제공하지 않기 때문에 이들 값을 참조하면 모두 10진수로 해석한다.\n12345678910var binary = 0b01000001; // 2진수var octal = 0o101; // 8진수var hex = 0x41; // 16진수// 표기법만 다를 뿐 모두 같은 값console.log(binary); // 65console.log(octal); // 65console.log(hex); // 65console.log(binary === octal); // true (참)console.log(octal === hex); // true (참)\n\n정수로 표시되더라도 사실은 실수를 의미한다.\n123console.log(1 === 1.0); // trueconsole.log(4 / 2); // 2console.log(3 / 2); // 1.5\n\n그 밖에 추가적으로 세 가지의 특별한 값도 표현할 수 있다.\n\nInfinity: 양의 무한대\n-Infinity: 음의 무한대\nNaN: 산술 연산 불가(Not a Number)\n\n123console.log(10 / 0); // Infinityconsole.log(10 / -0); // -Infinityconsole.log(1 * &quot;문자열 타입&quot;); // NaN\n\n❗️자바스크립트는 대소문자를 구별함으로 주의해야한다. (NAN, nan, Nan 등)\n","dateCreated":"2022-04-27T19:24:06+09:00","dateModified":"2022-04-27T19:55:13+09:00","datePublished":"2022-04-27T19:24:06+09:00","description":"자바스크립트의 경우 다른 언어와 다르게 하나의 숫자 타입(number type)만 존재한다. ECMAScript 사양에 따르면 숫자 타입의 값은 배정밀도 64비트 부동소수점 형식을 따른다.즉, 모든 수를 실수로 처리하며, 정수만 표현하기 위한 데이터 타입은 별도로 존재하지 않는","headline":"JavaScript 시작 (3-1) - 숫자 타입(number type)","image":[null,"javascript.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2022/04/27/JavaScript-getstart-3-2/"},"publisher":{"@type":"Organization","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg","logo":{"@type":"ImageObject","url":"bigjay.jpg"}},"url":"http://example.com/2022/04/27/JavaScript-getstart-3-2/","keywords":"Front-end, JavaScript","thumbnailUrl":"javascript.png"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg"},"articleBody":"자바스크립트의 경우 다른 언어와 다르게 하나의 숫자 타입(number type)만 존재한다. ECMAScript 사양에 따르면 숫자 타입의 값은 배정밀도 64비트 부동소수점 형식을 따른다.즉, 모든 수를 실수로 처리하며, 정수만 표현하기 위한 데이터 타입은 별도로 존재하지 않는\n\n\n1234// 모두 숫자 타입var integer = 10; // 정수var double = 10.12; // 실수var negative = -20; // 음의 정수\n\n자바스크립트는 2진수, 8진수, 16진수를 표현하기 위한 데이터 타입을 제공하지 않기 때문에 이들 값을 참조하면 모두 10진수로 해석한다.\n12345678910var binary = 0b01000001; // 2진수var octal = 0o101; // 8진수var hex = 0x41; // 16진수// 표기법만 다를 뿐 모두 같은 값console.log(binary); // 65console.log(octal); // 65console.log(hex); // 65console.log(binary === octal); // true (참)console.log(octal === hex); // true (참)\n\n정수로 표시되더라도 사실은 실수를 의미한다.\n123console.log(1 === 1.0); // trueconsole.log(4 / 2); // 2console.log(3 / 2); // 1.5\n\n그 밖에 추가적으로 세 가지의 특별한 값도 표현할 수 있다.\n\nInfinity: 양의 무한대\n-Infinity: 음의 무한대\nNaN: 산술 연산 불가(Not a Number)\n\n123console.log(10 / 0); // Infinityconsole.log(10 / -0); // -Infinityconsole.log(1 * &quot;문자열 타입&quot;); // NaN\n\n❗️자바스크립트는 대소문자를 구별함으로 주의해야한다. (NAN, nan, Nan 등)\n","dateCreated":"2022-04-27T19:24:06+09:00","dateModified":"2022-04-27T19:55:13+09:00","datePublished":"2022-04-27T19:24:06+09:00","description":"자바스크립트의 경우 다른 언어와 다르게 하나의 숫자 타입(number type)만 존재한다. ECMAScript 사양에 따르면 숫자 타입의 값은 배정밀도 64비트 부동소수점 형식을 따른다.즉, 모든 수를 실수로 처리하며, 정수만 표현하기 위한 데이터 타입은 별도로 존재하지 않는","headline":"JavaScript 시작 (3-1) - 숫자 타입(number type)","image":[null,"javascript.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/"},"publisher":{"@type":"Organization","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg","logo":{"@type":"ImageObject","url":"bigjay.jpg"}},"url":"https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/","keywords":"Front-end, JavaScript","thumbnailUrl":"javascript.png"}</script>
     <meta name="description" content="자바스크립트의 경우 다른 언어와 다르게 하나의 숫자 타입(number type)만 존재한다. ECMAScript 사양에 따르면 숫자 타입의 값은 배정밀도 64비트 부동소수점 형식을 따른다.즉, 모든 수를 실수로 처리하며, 정수만 표현하기 위한 데이터 타입은 별도로 존재하지 않는">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="JavaScript 시작 (3-1) - 숫자 타입(number type)">
-<meta property="og:url" content="http://example.com/2022/04/27/JavaScript-getstart-3-2/index.html">
+<meta property="og:url" content="https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/index.html">
 <meta property="og:site_name" content="BigBoy Club">
 <meta property="og:description" content="자바스크립트의 경우 다른 언어와 다르게 하나의 숫자 타입(number type)만 존재한다. ECMAScript 사양에 따르면 숫자 타입의 값은 배정밀도 64비트 부동소수점 형식을 따른다.즉, 모든 수를 실수로 처리하며, 정수만 표현하기 위한 데이터 타입은 별도로 존재하지 않는">
 <meta property="og:locale" content="ko_KR">
@@ -32,12 +32,12 @@
         
     
     
-        <meta property="og:image" content="http://example.com/assets/images/bigjay.jpg"/>
+        <meta property="og:image" content="https://jayone12.github.io/assets/images/bigjay.jpg"/>
     
     
     
-        <meta property="og:image" content="http://example.com/2022/04/27/JavaScript-getstart-3-2/javascript.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="http://example.com/2022/04/27/JavaScript-getstart-3-2/javascript.png"/>
+        <meta property="og:image" content="https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/javascript.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/javascript.png"/>
     
     
     <!--STYLES-->
@@ -370,7 +370,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2022/04/27/JavaScript-getstart-3-2/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/"
                     title="Facebook에 공유하기"
                     aria-label="Facebook에 공유하기"
                 >
@@ -383,7 +383,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=http://example.com/2022/04/27/JavaScript-getstart-3-2/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/"
                     title="Twitter에 공유하기"
                     aria-label="Twitter에 공유하기"
                 >
@@ -396,7 +396,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=http://example.com/2022/04/27/JavaScript-getstart-3-2/"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/"
                     title="Google+에 공유하기"
                     aria-label="Google+에 공유하기"
                 >
@@ -482,7 +482,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2022/04/27/JavaScript-getstart-3-2/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/"
                     title="Facebook에 공유하기"
                     aria-label="Facebook에 공유하기"
                 >
@@ -495,7 +495,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=http://example.com/2022/04/27/JavaScript-getstart-3-2/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/"
                     title="Twitter에 공유하기"
                     aria-label="Twitter에 공유하기"
                 >
@@ -508,7 +508,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=http://example.com/2022/04/27/JavaScript-getstart-3-2/"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/"
                     title="Google+에 공유하기"
                     aria-label="Google+에 공유하기"
                 >
@@ -542,7 +542,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2022/04/27/JavaScript-getstart-3-2/"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/"
                         aria-label="Facebook에 공유하기"
                     >
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
@@ -555,7 +555,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://twitter.com/intent/tweet?text=http://example.com/2022/04/27/JavaScript-getstart-3-2/"
+                        href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/"
                         aria-label="Twitter에 공유하기"
                     >
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
@@ -568,7 +568,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://plus.google.com/share?url=http://example.com/2022/04/27/JavaScript-getstart-3-2/"
+                        href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/27/JavaScript-getstart-3-2/"
                         aria-label="Google+에 공유하기"
                     >
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
