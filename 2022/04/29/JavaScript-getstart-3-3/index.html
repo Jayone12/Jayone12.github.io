@@ -6,28 +6,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="BigBoy Club">
-    <title>JavaScript 시작 (2) - 변수(2) - var - BigBoy Club</title>
+    <title>JavaScript 시작 (3-3) - 문자열 타입(string type) - BigBoy Club</title>
     <meta name="author" content="Jay Park">
     
     
         <link rel="icon" href="https://jayone12.github.io/assets/images/bigjay.jpg">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg"},"articleBody":"변수 선언은 변수를 생성하는 것을 말한다. 즉 값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 메모리 공간을 연결하는 준비 단계.\n\n\n변수를 선언을 하기 위해서는 var, let, const가 있는데 이 중 var에 대해 포스팅 한다.\nvarES6(ECMAScript 2015) 도입 이전까지 var 명령어는 자바스크립트에서 변수를 선언할 수 있는 유일한 명령어였다.\n1var number; // 변수 이름(number) 선언\n\nnumber의 이름으로 변수를 선언함으로써 메모리 공간을 확보하였다.값이 할당되어 있지 않아 초기화 상태로 값은 undefined 다.\n값 할당변수에 값을 할당할 때는 연산자 =를 사용한다. 할당 연사자는 우변의 값을 좌변의 변수에 할당한다.\n12345var number; // 변수 선언number = 10; // 값 할당// 또는 아래와 같이 하나의 문(statement)으로 단축 표현 가능var number = 10;\n\n이 때 하나의 문으로 작성을 하더라도 변수 선언과 값의 할당을 2개의 문으로 나누어 각각 실행한다.\n123456console.log(number); // undefinedvar number; // 변수 선언number = 10; // 값 할당console.log(number); // 10\n\n자바스크립트는 인터프리터 언어로 위에서 아래로 코드를 순차적으로 진행하는데 위 코드를 보면 변수가 선언되기 전에 console.log()를 사용하여 변수 값을 확인하였다.이 때 오류가 날 것 같지만 변수 선언의 경우 런타임 이전에 단계에서 먼저 실행이 되기 때문에 오류가 발생하지 않는다.\n이처럼 변수 선언이 코드 상위로 끌어 올려진 것처럼 동작하는 것을 변수 호이스팅(variable hoisting)이라고 한다.\n❗️변수 선언은 런타임 이전에 실행되며, 값의 할당은 런타임에 실행된다.\n","dateCreated":"2022-04-26T15:24:59+09:00","dateModified":"2022-04-29T16:33:02+09:00","datePublished":"2022-04-26T15:24:59+09:00","description":"변수 선언은 변수를 생성하는 것을 말한다. 즉 값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 메모리 공간을 연결하는 준비 단계.","headline":"JavaScript 시작 (2) - 변수(2) - var","image":[null,"javascript.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"},"publisher":{"@type":"Organization","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg","logo":{"@type":"ImageObject","url":"bigjay.jpg"}},"url":"https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/","keywords":"Front-end, JavaScript, variable, var","thumbnailUrl":"javascript.png"}</script>
-    <meta name="description" content="변수 선언은 변수를 생성하는 것을 말한다. 즉 값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 메모리 공간을 연결하는 준비 단계.">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg"},"articleBody":"텍스트 데이터를 나타내는데 사용하며, 0개 이상의 16비트 유니코드 문자(UTF-16)의 집합으로 전 세계 대부분의 문자 표현이 가능하다.\n\n\n문자열 표현 방법은 작은 따옴표(‘’), 큰 따옴표(“”), 백틱(&#96;&#96;)으로 감싸며 아래와 같다.\n1234567var string;string = &quot;문자열&quot;; // 작은 따옴표string = &quot;문자열&quot;; // 큰 따옴표string = `문자열`; // 백틱(ES6)// 위와 같이 감싸지 않을 경우 식별자로 인식string = 문자열; // 레퍼런스 오류\n\n❗️자바스크립트의 문자열은 원시타입이며, 변경 불가능한 값이다.\n\n\n\n문자열의 불변성에 대해서는 차후에 정리할 예정.\n\n\n\n템플릿 리터럴문자열을 표현하는 방법 중 백틱(&#96;&#96;)은 ES6부터 새롭게 생긴 템플릿 리터럴이라는 문자열 표기법이다.템플릿 리터럴은 문자열, 표현식 삽입, 태그드 템플릿 등 한번에 문자열 처리 기능을 제공하며, 런타임에 일반 문자열로 변환한다.\n12var template = `Template literal`;console.log(template); //Template literal\n\n\n\n멀티라인 문자열일반 문자열 내에서는 줄바꿈이 허용 되지 않는다.\n123456789// ⭕️var string = &quot;문자열은 줄바꿈을 허용하지 \\n 않는다&quot;;// 이스케이프 시퀀서 &quot;\\n&quot;을 사용함으로써 줄바꿈을 한다.// ❌var string = &quot;문자열은 줄바꿈을 허용하지않는다&quot;;// Uncaught SyntaxError: Invalid or unexpected token\n\n이스케이프 시퀀스(Escape sequence)\n\n\n이스세이프 시퀀스\n의미\n\n\n\n\\0\nNull\n\n\n\\b\n벡스페이스\n\n\n\\f\n폼 피드: 프린터로 출력할 경우 다음 페이지의 시작 지점으로 이동\n\n\n\\n\n줄 바꿈\n\n\n\\t\n탭(수평)\n\n\n\\v\n탭(수직)\n\n\n&#39;\n작은 따옴표\n\n\n&quot;\n큰 따옴표\n\n\n\\\n백슬래시\n\n\n\n\n표현식 삽입문자열은 +연산자를 사용해여 연결할 수 있다.\n12345678var firstName = &quot;Jaewon&quot;;var lastName = &quot;Park&quot;;// ES5: 문자열 연결console.log(&quot;My name is &quot; + firstName + &quot; &quot; + lastName); // MY name is Jaewon Park// ES6: 템플릿 리터럴의 표현식 삽입console.log(`My name is $&#123;firstName&#125; $&#123;lastName&#125;`); // MY name is Jaewon Park\n\n\n\n템플릿 리터널의 경우 표현식 삽입은 $&#123;&#125;으로 표현식을 감싸면 된다.\n","dateCreated":"2022-04-29T13:47:21+09:00","dateModified":"2022-04-29T16:31:57+09:00","datePublished":"2022-04-29T13:47:21+09:00","description":"텍스트 데이터를 나타내는데 사용하며, 0개 이상의 16비트 유니코드 문자(UTF-16)의 집합으로 전 세계 대부분의 문자 표현이 가능하다.","headline":"JavaScript 시작 (3-3) - 문자열 타입(string type)","image":[null,"javascript.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/"},"publisher":{"@type":"Organization","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg","logo":{"@type":"ImageObject","url":"bigjay.jpg"}},"url":"https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/","keywords":"Front-end, JavaScript, data type, string type","thumbnailUrl":"javascript.png"}</script>
+    <meta name="description" content="텍스트 데이터를 나타내는데 사용하며, 0개 이상의 16비트 유니코드 문자(UTF-16)의 집합으로 전 세계 대부분의 문자 표현이 가능하다.">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="JavaScript 시작 (2) - 변수(2) - var">
-<meta property="og:url" content="https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/index.html">
+<meta property="og:title" content="JavaScript 시작 (3-3) - 문자열 타입(string type)">
+<meta property="og:url" content="https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/index.html">
 <meta property="og:site_name" content="BigBoy Club">
-<meta property="og:description" content="변수 선언은 변수를 생성하는 것을 말한다. 즉 값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 메모리 공간을 연결하는 준비 단계.">
+<meta property="og:description" content="텍스트 데이터를 나타내는데 사용하며, 0개 이상의 16비트 유니코드 문자(UTF-16)의 집합으로 전 세계 대부분의 문자 표현이 가능하다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="article:published_time" content="2022-04-26T06:24:59.000Z">
-<meta property="article:modified_time" content="2022-04-29T07:33:02.678Z">
+<meta property="article:published_time" content="2022-04-29T04:47:21.000Z">
+<meta property="article:modified_time" content="2022-04-29T07:31:57.483Z">
 <meta property="article:author" content="Jay Park">
 <meta property="article:tag" content="Front-end">
 <meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="variable">
-<meta property="article:tag" content="var">
+<meta property="article:tag" content="data type">
+<meta property="article:tag" content="string type">
 <meta name="twitter:card" content="summary">
     
     
@@ -38,8 +38,8 @@
     
     
     
-        <meta property="og:image" content="https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/javascript.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/javascript.png"/>
+        <meta property="og:image" content="https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/javascript.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/javascript.png"/>
     
     
     <!--STYLES-->
@@ -249,20 +249,20 @@
         <div class="post-header-cover
                     text-left
                     "
-             style="background-image:url('/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/javascript.png');"
+             style="background-image:url('/2022/04/29/JavaScript-getstart-3-3/javascript.png');"
              data-behavior="4">
             
                 <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            JavaScript 시작 (2) - 변수(2) - var
+            JavaScript 시작 (3-3) - 문자열 타입(string type)
         </h1>
     
     
         <div class="post-meta">
-    <time datetime="2022-04-26T15:24:59+09:00">
+    <time datetime="2022-04-29T13:47:21+09:00">
 	
-		    2022/04/26
+		    2022/04/29
     	
     </time>
     
@@ -290,23 +290,80 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>변수 선언은 변수를 생성하는 것을 말한다. 즉 값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 메모리 공간을 연결하는 준비 단계.</p>
+            <p>텍스트 데이터를 나타내는데 사용하며, 0개 이상의 16비트 유니코드 문자(UTF-16)의 집합으로 전 세계 대부분의 문자 표현이 가능하다.</p>
 <span id="more"></span>
 
-<p>변수를 선언을 하기 위해서는 var, let, const가 있는데 이 중 var에 대해 포스팅 한다.</p>
-<h2 id="var"><a href="#var" class="headerlink" title="var"></a>var</h2><p>ES6(ECMAScript 2015) 도입 이전까지 var 명령어는 자바스크립트에서 변수를 선언할 수 있는 유일한 명령어였다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> number; <span class="comment">// 변수 이름(number) 선언</span></span><br></pre></td></tr></table></figure>
+<p>문자열 표현 방법은 작은 따옴표(‘’), 큰 따옴표(“”), 백틱(&#96;&#96;)으로 감싸며 아래와 같다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> string;</span><br><span class="line">string = <span class="string">&quot;문자열&quot;</span>; <span class="comment">// 작은 따옴표</span></span><br><span class="line">string = <span class="string">&quot;문자열&quot;</span>; <span class="comment">// 큰 따옴표</span></span><br><span class="line">string = <span class="string">`문자열`</span>; <span class="comment">// 백틱(ES6)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 위와 같이 감싸지 않을 경우 식별자로 인식</span></span><br><span class="line">string = 문자열; <span class="comment">// 레퍼런스 오류</span></span><br></pre></td></tr></table></figure>
 
-<p>number의 이름으로 변수를 선언함으로써 메모리 공간을 확보하였다.<br>값이 할당되어 있지 않아 초기화 상태로 값은 <code>undefined</code> 다.</p>
-<h3 id="값-할당"><a href="#값-할당" class="headerlink" title="값 할당"></a>값 할당</h3><p>변수에 값을 할당할 때는 연산자 <code>=</code>를 사용한다. 할당 연사자는 우변의 값을 좌변의 변수에 할당한다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> number; <span class="comment">// 변수 선언</span></span><br><span class="line">number = <span class="number">10</span>; <span class="comment">// 값 할당</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 또는 아래와 같이 하나의 문(statement)으로 단축 표현 가능</span></span><br><span class="line"><span class="keyword">var</span> number = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<p>❗️자바스크립트의 문자열은 원시타입이며, 변경 불가능한 값이다.</p>
+<br>
 
-<p>이 때 하나의 문으로 작성을 하더라도 변수 선언과 값의 할당을 2개의 문으로 나누어 각각 실행한다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(number); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> number; <span class="comment">// 변수 선언</span></span><br><span class="line">number = <span class="number">10</span>; <span class="comment">// 값 할당</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(number); <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>문자열의 불변성에 대해서는 차후에 정리할 예정.</p>
+</blockquote>
+<br>
 
-<p>자바스크립트는 <code>인터프리터 언어</code>로 위에서 아래로 코드를 순차적으로 진행하는데 위 코드를 보면 변수가 선언되기 전에 console.log()를 사용하여 변수 값을 확인하였다.<br>이 때 오류가 날 것 같지만 변수 선언의 경우 런타임 이전에 단계에서 먼저 실행이 되기 때문에 오류가 발생하지 않는다.</p>
-<p>이처럼 변수 선언이 코드 상위로 끌어 올려진 것처럼 동작하는 것을 <code>변수 호이스팅(variable hoisting)</code>이라고 한다.</p>
-<p><code>❗️변수 선언은 런타임 이전에 실행되며, 값의 할당은 런타임에 실행된다.</code></p>
+<h3 id="템플릿-리터럴"><a href="#템플릿-리터럴" class="headerlink" title="템플릿 리터럴"></a>템플릿 리터럴</h3><p>문자열을 표현하는 방법 중 백틱(&#96;&#96;)은 ES6부터 새롭게 생긴 템플릿 리터럴이라는 문자열 표기법이다.<br>템플릿 리터럴은 문자열, 표현식 삽입, 태그드 템플릿 등 한번에 문자열 처리 기능을 제공하며, 런타임에 일반 문자열로 변환한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> template = <span class="string">`Template literal`</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(template); <span class="comment">//Template literal</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="멀티라인-문자열"><a href="#멀티라인-문자열" class="headerlink" title="멀티라인 문자열"></a>멀티라인 문자열</h3><p>일반 문자열 내에서는 줄바꿈이 허용 되지 않는다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ⭕️</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="string">&quot;문자열은 줄바꿈을 허용하지 \n 않는다&quot;</span>;</span><br><span class="line"><span class="comment">// 이스케이프 시퀀서 &quot;\n&quot;을 사용함으로써 줄바꿈을 한다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ❌</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="string">&quot;문자열은 줄바꿈을 허용하지</span></span><br><span class="line"><span class="string">않는다&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Uncaught SyntaxError: Invalid or unexpected token</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="이스케이프-시퀀스-Escape-sequence"><a href="#이스케이프-시퀀스-Escape-sequence" class="headerlink" title="이스케이프 시퀀스(Escape sequence)"></a>이스케이프 시퀀스(Escape sequence)</h4><table>
+<thead>
+<tr>
+<th>이스세이프 시퀀스</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\0</td>
+<td>Null</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>벡스페이스</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>폼 피드: 프린터로 출력할 경우 다음 페이지의 시작 지점으로 이동</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>줄 바꿈</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>탭(수평)</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>탭(수직)</td>
+</tr>
+<tr>
+<td>&#39;</td>
+<td>작은 따옴표</td>
+</tr>
+<tr>
+<td>&quot;</td>
+<td>큰 따옴표</td>
+</tr>
+<tr>
+<td>\</td>
+<td>백슬래시</td>
+</tr>
+</tbody></table>
+<br>
+
+<h3 id="표현식-삽입"><a href="#표현식-삽입" class="headerlink" title="표현식 삽입"></a>표현식 삽입</h3><p>문자열은 <code>+</code>연산자를 사용해여 연결할 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> firstName = <span class="string">&quot;Jaewon&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> lastName = <span class="string">&quot;Park&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES5: 문자열 연결</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;My name is &quot;</span> + firstName + <span class="string">&quot; &quot;</span> + lastName); <span class="comment">// MY name is Jaewon Park</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6: 템플릿 리터럴의 표현식 삽입</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`My name is <span class="subst">$&#123;firstName&#125;</span> <span class="subst">$&#123;lastName&#125;</span>`</span>); <span class="comment">// MY name is Jaewon Park</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>템플릿 리터널의 경우 표현식 삽입은 <code>$&#123;&#125;</code>으로 표현식을 감싸면 된다.</p>
 
             
 
@@ -318,7 +375,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">태그</span><br/>
                 
-    <a class="tag tag--primary tag--small t-none-link" href="/tags/Front-end/" rel="tag">Front-end</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/var/" rel="tag">var</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/variable/" rel="tag">variable</a>
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Front-end/" rel="tag">Front-end</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/data-type/" rel="tag">data type</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/string-type/" rel="tag">string type</a>
 
             </div>
         
@@ -331,9 +388,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2022/04/27/JavaScript-getstart-3-1/"
-                    data-tooltip="JavaScript 시작 (3-1) - 데이터 종류(자료형)"
-                    aria-label="이전: JavaScript 시작 (3-1) - 데이터 종류(자료형)"
+                    href="/2022/04/29/JavaScript-getstart-3-4/"
+                    data-tooltip="JavaScript 시작 (3-4) - 불리언 타입(boolean type)"
+                    aria-label="이전: JavaScript 시작 (3-4) - 불리언 타입(boolean type)"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -345,9 +402,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-1/"
-                    data-tooltip="JavaScript 시작 (2) - 변수(1) - 변수란?"
-                    aria-label="다음: JavaScript 시작 (2) - 변수(1) - 변수란?"
+                    href="/2022/04/27/JavaScript-getstart-3-2/"
+                    data-tooltip="JavaScript 시작 (3-2) - 숫자 타입(number type)"
+                    aria-label="다음: JavaScript 시작 (3-2) - 숫자 타입(number type)"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">다음</span>
@@ -372,7 +429,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/"
                     title="Facebook에 공유하기"
                     aria-label="Facebook에 공유하기"
                 >
@@ -385,7 +442,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/"
                     title="Twitter에 공유하기"
                     aria-label="Twitter에 공유하기"
                 >
@@ -398,7 +455,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/"
                     title="Google+에 공유하기"
                     aria-label="Google+에 공유하기"
                 >
@@ -446,9 +503,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2022/04/27/JavaScript-getstart-3-1/"
-                    data-tooltip="JavaScript 시작 (3-1) - 데이터 종류(자료형)"
-                    aria-label="이전: JavaScript 시작 (3-1) - 데이터 종류(자료형)"
+                    href="/2022/04/29/JavaScript-getstart-3-4/"
+                    data-tooltip="JavaScript 시작 (3-4) - 불리언 타입(boolean type)"
+                    aria-label="이전: JavaScript 시작 (3-4) - 불리언 타입(boolean type)"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -460,9 +517,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-1/"
-                    data-tooltip="JavaScript 시작 (2) - 변수(1) - 변수란?"
-                    aria-label="다음: JavaScript 시작 (2) - 변수(1) - 변수란?"
+                    href="/2022/04/27/JavaScript-getstart-3-2/"
+                    data-tooltip="JavaScript 시작 (3-2) - 숫자 타입(number type)"
+                    aria-label="다음: JavaScript 시작 (3-2) - 숫자 타입(number type)"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">다음</span>
@@ -487,7 +544,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/"
                     title="Facebook에 공유하기"
                     aria-label="Facebook에 공유하기"
                 >
@@ -500,7 +557,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/"
                     title="Twitter에 공유하기"
                     aria-label="Twitter에 공유하기"
                 >
@@ -513,7 +570,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/"
                     title="Google+에 공유하기"
                     aria-label="Google+에 공유하기"
                 >
@@ -547,7 +604,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/"
                         aria-label="Facebook에 공유하기"
                     >
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
@@ -560,7 +617,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                        href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/"
                         aria-label="Twitter에 공유하기"
                     >
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
@@ -573,7 +630,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/26/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-2-2/"
+                        href="https://plus.google.com/share?url=https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/"
                         aria-label="Google+에 공유하기"
                     >
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
