@@ -1,0 +1,645 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="BigBoy Club">
+    <title>JavaScript 시작 (4-1) - 연산자 (산술 연산자) - BigBoy Club</title>
+    <meta name="author" content="Jay Park">
+    
+    
+        <link rel="icon" href="https://jayone12.github.io/assets/images/bigjay.jpg">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg"},"articleBody":"연산자하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산 등을 수행해 하나의 값을 만든다. 이때 연산의 대상을 피연산자라 하며, 연산자는 값으로 평가된 피연산자를 연산해 새로운 값을 만든다.\n\n\n\n산술 연산자피연산자를 대상으로 수학적 계산을 수행해 새로운 숫자 값을 만들며, 계산이 불가능할 경우 NaN을 반환한다.\n1. 이항 산순 연산자2개의 피연산자를 산술 연산하여 숫자 값을 만들며, 피연산자의 값을 변경하는 부수 효과는 없기 떄문에 언제나 새로운 값을 만든다.\n\n피연산자의 값이 바뀌는 경우는 없다.\n\n\n\n1234567891011121314// 덧셈5 + 2; // 7// 뺄셈5 - 2; // 3// 곱셈5 * 2; // 10// 나눗셈5 / 2; // 2.5// 나머지5 % 2; // 1\n\n2. 단항 산술 연산자1개의 피연산자를 산술 연산하여 숫자 값을 생성\n123456789var x = 1;// ++ 증가 (피연산자의 값을 변경하는 암묵적 할당이 이뤄진다.)x++; // x = x + 1;console.log(x); // 2// -- 감소 (증가와 동일)x--; // x = x - 1;console.log(x); // 1\n\n\n증가&#x2F;감소 연산자는 위치에 따라 의미가 있다.\n\n피연산자 앞에 위치한 전위 증가&#x2F;감소 연산자는 먼저 피연산자의 값을 증가&#x2F;감소시킨 후, 다른 연산 수행\n피연산자 뒤에 위치한 후위 증가&#x2F;감소 연산자는 먼저 다른 연산을 수행한 후, 피연산자의 값을 증가&#x2F;감소\n\n\n123456789101112131415161718var x = 1;var result = x;// 선할당 후증가result = x++;console.log(result, x); // 1, 2// 선증가 후할당result = ++x;console.log(result, x); // 3, 3// 선할당 후감소result = x--;console.log(result, x); // 3, 2// 선감소 후할당result = --x;console.log(result, x); // 1, 1\n\n\n\n3. 문자열 연결 연산자+연산자는 피연사 중 하나 이상이 문자열인 경우 문자열 연결 연산자로 동작한다.\n123456789101112131415// 문자열 연결 연산자&quot;1&quot; + 2; // &#x27;12&#x27; (string)1 + &quot;2&quot;; // &#x27;12&#x27; (String)// true는 1로 타입 변환1 + true; // 2// false는 0으로 타입 변환1 + false; // 1// null은 0으로 타입 변환1 + null; // 1//undefined는 타입 변환이 이뤄지지 않는다.1 + undefined; // NaN\n\n위 예제를 보면 1 + true를 연산하면 true를 숫자 1로 타입을 변경하게 되는데 이를 타입 강제 변환이라고 한다.\n","dateCreated":"2022-05-03T16:50:44+09:00","dateModified":"2022-05-03T19:33:12+09:00","datePublished":"2022-05-03T16:50:44+09:00","description":"연산자하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산 등을 수행해 하나의 값을 만든다. 이때 연산의 대상을 피연산자라 하며, 연산자는 값으로 평가된 피연산자를 연산해 새로운 값을 만든다.","headline":"JavaScript 시작 (4-1) - 연산자 (산술 연산자)","image":[null,"javascript.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/"},"publisher":{"@type":"Organization","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg","logo":{"@type":"ImageObject","url":"bigjay.jpg"}},"url":"https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/","keywords":"Front-end, JavaScript, operator, arithmetic operator","thumbnailUrl":"javascript.png"}</script>
+    <meta name="description" content="연산자하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산 등을 수행해 하나의 값을 만든다. 이때 연산의 대상을 피연산자라 하며, 연산자는 값으로 평가된 피연산자를 연산해 새로운 값을 만든다.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="JavaScript 시작 (4-1) - 연산자 (산술 연산자)">
+<meta property="og:url" content="https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/index.html">
+<meta property="og:site_name" content="BigBoy Club">
+<meta property="og:description" content="연산자하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산 등을 수행해 하나의 값을 만든다. 이때 연산의 대상을 피연산자라 하며, 연산자는 값으로 평가된 피연산자를 연산해 새로운 값을 만든다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2022-05-03T07:50:44.000Z">
+<meta property="article:modified_time" content="2022-05-03T10:33:12.592Z">
+<meta property="article:author" content="Jay Park">
+<meta property="article:tag" content="Front-end">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="operator">
+<meta property="article:tag" content="arithmetic operator">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://jayone12.github.io/assets/images/bigjay.jpg"/>
+    
+    
+    
+        <meta property="og:image" content="https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/javascript.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/javascript.png"/>
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/style-wtidpcz4ucy8a2uf3ngaleh5rpr8hzzbnnffumamxhrd7ezb6ya9tsidixxb.min.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            BigBoy Club
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="링크 열기: /#about"
+            >
+        
+        
+            <img class="header-picture" src="/assets/images/bigjay.jpg" alt="저자 이미지"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="저자에 대해 더 알아보기"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/bigjay.jpg" alt="저자 이미지"/>
+                </a>
+                <h4 class="sidebar-profile-name">Jay Park</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Welcome to BigBoy Club</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="Home"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="카테고리"
+                        >
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="태그"
+                        >
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="아카이브"
+                        >
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">아카이브</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
+                            
+                            rel="noopener"
+                            title="검색"
+                        >
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">검색</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="#about"
+                            
+                            rel="noopener"
+                            title="About"
+                        >
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/Jayone12"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.linkedin.com/in/park-jaewon-36282615a/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="LinkedIn"
+                        >
+                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">LinkedIn</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+        <div class="post-header-cover
+                    text-left
+                    "
+             style="background-image:url('/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/javascript.png');"
+             data-behavior="4">
+            
+                <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            JavaScript 시작 (4-1) - 연산자 (산술 연산자)
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2022-05-03T16:50:44+09:00">
+	
+		    2022/05/03
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
+
+
+    
+</div>
+
+    
+</div>
+
+            
+        </div>
+
+            <div id="main" data-behavior="4"
+                 class="hasCover
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h3 id="연산자"><a href="#연산자" class="headerlink" title="연산자"></a>연산자</h3><p>하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산 등을 수행해 하나의 값을 만든다. 이때 연산의 대상을 피연산자라 하며, 연산자는 값으로 평가된 피연산자를 연산해 새로운 값을 만든다.</p>
+<span id="more"></span>
+<br>
+
+<h3 id="산술-연산자"><a href="#산술-연산자" class="headerlink" title="산술 연산자"></a>산술 연산자</h3><p>피연산자를 대상으로 수학적 계산을 수행해 새로운 숫자 값을 만들며, 계산이 불가능할 경우 <code>NaN</code>을 반환한다.</p>
+<h4 id="1-이항-산순-연산자"><a href="#1-이항-산순-연산자" class="headerlink" title="1. 이항 산순 연산자"></a>1. 이항 산순 연산자</h4><p>2개의 피연산자를 산술 연산하여 숫자 값을 만들며, 피연산자의 값을 변경하는 부수 효과는 없기 떄문에 언제나 새로운 값을 만든다.</p>
+<blockquote>
+<p>피연산자의 값이 바뀌는 경우는 없다.</p>
+</blockquote>
+<br>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 덧셈</span></span><br><span class="line"><span class="number">5</span> + <span class="number">2</span>; <span class="comment">// 7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 뺄셈</span></span><br><span class="line"><span class="number">5</span> - <span class="number">2</span>; <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 곱셈</span></span><br><span class="line"><span class="number">5</span> * <span class="number">2</span>; <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 나눗셈</span></span><br><span class="line"><span class="number">5</span> / <span class="number">2</span>; <span class="comment">// 2.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 나머지</span></span><br><span class="line"><span class="number">5</span> % <span class="number">2</span>; <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-단항-산술-연산자"><a href="#2-단항-산술-연산자" class="headerlink" title="2. 단항 산술 연산자"></a>2. 단항 산술 연산자</h4><p>1개의 피연산자를 산술 연산하여 숫자 값을 생성</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ++ 증가 (피연산자의 값을 변경하는 암묵적 할당이 이뤄진다.)</span></span><br><span class="line">x++; <span class="comment">// x = x + 1;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x); <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// -- 감소 (증가와 동일)</span></span><br><span class="line">x--; <span class="comment">// x = x - 1;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>증가&#x2F;감소 연산자는 위치에 따라 의미가 있다.</p>
+<ul>
+<li>피연산자 앞에 위치한 전위 증가&#x2F;감소 연산자는 먼저 피연산자의 값을 증가&#x2F;감소시킨 후, 다른 연산 수행</li>
+<li>피연산자 뒤에 위치한 후위 증가&#x2F;감소 연산자는 먼저 다른 연산을 수행한 후, 피연산자의 값을 증가&#x2F;감소</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> result = x;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 선할당 후증가</span></span><br><span class="line">result = x++;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result, x); <span class="comment">// 1, 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 선증가 후할당</span></span><br><span class="line">result = ++x;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result, x); <span class="comment">// 3, 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 선할당 후감소</span></span><br><span class="line">result = x--;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result, x); <span class="comment">// 3, 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 선감소 후할당</span></span><br><span class="line">result = --x;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result, x); <span class="comment">// 1, 1</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h4 id="3-문자열-연결-연산자"><a href="#3-문자열-연결-연산자" class="headerlink" title="3. 문자열 연결 연산자"></a>3. 문자열 연결 연산자</h4><p><code>+</code>연산자는 피연사 중 하나 이상이 문자열인 경우 문자열 연결 연산자로 동작한다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 문자열 연결 연산자</span></span><br><span class="line"><span class="string">&quot;1&quot;</span> + <span class="number">2</span>; <span class="comment">// &#x27;12&#x27; (string)</span></span><br><span class="line"><span class="number">1</span> + <span class="string">&quot;2&quot;</span>; <span class="comment">// &#x27;12&#x27; (String)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// true는 1로 타입 변환</span></span><br><span class="line"><span class="number">1</span> + <span class="literal">true</span>; <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// false는 0으로 타입 변환</span></span><br><span class="line"><span class="number">1</span> + <span class="literal">false</span>; <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// null은 0으로 타입 변환</span></span><br><span class="line"><span class="number">1</span> + <span class="literal">null</span>; <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//undefined는 타입 변환이 이뤄지지 않는다.</span></span><br><span class="line"><span class="number">1</span> + <span class="literal">undefined</span>; <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<p>위 예제를 보면 1 + true를 연산하면 true를 숫자 1로 타입을 변경하게 되는데 이를 타입 강제 변환이라고 한다.</p>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">태그</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Front-end/" rel="tag">Front-end</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/arithmetic-operator/" rel="tag">arithmetic operator</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/operator/" rel="tag">operator</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/05/02/JavaScript-getstart-3-8/"
+                    data-tooltip="JavaScript 시작 (3-8) - 동적 타이핑"
+                    aria-label="다음: JavaScript 시작 (3-8) - 동적 타이핑"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="이 포스트 공유하기"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/"
+                    title="Facebook에 공유하기"
+                    aria-label="Facebook에 공유하기"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/"
+                    title="Twitter에 공유하기"
+                    aria-label="Twitter에 공유하기"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/"
+                    title="Google+에 공유하기"
+                    aria-label="Google+에 공유하기"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2022 Jay Park. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/05/02/JavaScript-getstart-3-8/"
+                    data-tooltip="JavaScript 시작 (3-8) - 동적 타이핑"
+                    aria-label="다음: JavaScript 시작 (3-8) - 동적 타이핑"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="이 포스트 공유하기"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/"
+                    title="Facebook에 공유하기"
+                    aria-label="Facebook에 공유하기"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/"
+                    title="Twitter에 공유하기"
+                    aria-label="Twitter에 공유하기"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/"
+                    title="Google+에 공유하기"
+                    aria-label="Google+에 공유하기"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/"
+                        aria-label="Facebook에 공유하기"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/"
+                        aria-label="Twitter에 공유하기"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/03/JavaScript-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-4/"
+                        aria-label="Google+에 공유하기"
+                    >
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/bigjay.jpg" alt="저자 이미지"/>
+        
+            <h4 id="about-card-name">Jay Park</h4>
+        
+            <div id="about-card-bio"><p>Welcome to BigBoy Club</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>front-end developer</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/script-punuykw6v9dzdftw6djxuvr1rdlzcsfvdi2k8cdczgmbt1bprlzzh76gosxz.min.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+
+    </body>
+</html>
