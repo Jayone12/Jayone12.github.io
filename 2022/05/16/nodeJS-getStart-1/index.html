@@ -6,28 +6,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="BigBoy Club">
-    <title>JavaScript 시작 (4-2) - 할당 연산자 - BigBoy Club</title>
+    <title>node.js란? - BigBoy Club</title>
     <meta name="author" content="Jay Park">
     
     
         <link rel="icon" href="https://jayone12.github.io/assets/images/bigjay.jpg">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg"},"articleBody":"할당 연산자는 우항에 있는 피연산자의 평가 결과를 좌할에 있는 변수에 할당하며 좌항의 변수에 값을 할당하므로 변수 값이 변하는 부수 효과가 있다.\n\n\n\n\n\n\n\n할당 연산자\n예\n동일 표현\n부수 효과\n\n\n\n&#x3D;\nx &#x3D; 5\nx &#x3D; 5\nO\n\n\n+&#x3D;\nx +&#x3D; 5\nx &#x3D; x + 5\nO\n\n\n-&#x3D;\nx -&#x3D; 5\nx &#x3D; x - 5\nO\n\n\n*&#x3D;\nx *&#x3D; 5\nx &#x3D; x * 5\nO\n\n\n&#x2F;&#x3D;\nx &#x2F;&#x3D; 5\nx &#x3D; x &#x2F; 5\nO\n\n\n%&#x3D;\nx %&#x3D; 5\nx &#x3D; x % 5\nO\n\n\n\n\n1234567var x = 10;x += 5; // 15x -= 5; // 10x *= 5; // 50x /= 5; // 10x %= 5; // 0\n\n❗️ 할당문은 표현식인 문일까? 표현식이 아닌 문일까?\n표현식값으로 평가될 수 있는 문으로 표현식이 평가되면 새로운 값을 생성하거나 기존 값을 참조한다.\n\n\n\n1234var x;// 할당문은 표현식인 문이다.console.log((x = 10)); // 10\n\n할당문은 변수에 값을 할당하는 부수 효과만 있을 뿐 값으로 평가되지 않을 것 처럼 보이지만 값으로 평가되는 표현식인 문으로서 할당된 값으로 평가된다.\n\n\n이러한 특징을 활용하여 여러 변수에 동일한 값을 연쇄 할당도 가능하다.\n123456var a, b, c;// 연쇄 할당a = b = c = 0;console.log(a, b, c); // 0 0 0\n\n\n연쇄 할당① c &#x3D; 0 0으로 평가된다.② b &#x3D; 0 0으로 평가된다.③ a &#x3D; 0 0으로 평가된다.\n\n","dateCreated":"2022-05-12T17:22:22+09:00","dateModified":"2022-05-12T20:59:01+09:00","datePublished":"2022-05-12T17:22:22+09:00","description":"할당 연산자는 우항에 있는 피연산자의 평가 결과를 좌할에 있는 변수에 할당하며 좌항의 변수에 값을 할당하므로 변수 값이 변하는 부수 효과가 있다.","headline":"JavaScript 시작 (4-2) - 할당 연산자","image":[null,"javascript.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/"},"publisher":{"@type":"Organization","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg","logo":{"@type":"ImageObject","url":"bigjay.jpg"}},"url":"https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/","keywords":"Front-end, JavaScript, operator, assignment operator","thumbnailUrl":"javascript.png"}</script>
-    <meta name="description" content="할당 연산자는 우항에 있는 피연산자의 평가 결과를 좌할에 있는 변수에 할당하며 좌항의 변수에 값을 할당하므로 변수 값이 변하는 부수 효과가 있다.">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg"},"articleBody":"node.js는 Chrome V8 JavaScript 엔진으로 빌드된 JavaScript 런타임이다.\n\n런타임이란?프로그래밍 언어가 동작하는 환경을 말한다.\n\n브라우저의 JavaScript 엔진에서 동작하는 JavaScript를 브라우저 이외의 환경에서도 동작할 수 있도록하는 실행환경이다.\n\n\n다양한 플랫폼에 적용할 수 있지만 서버 사이드 애플리케이션 개발에 주로 사용되며, 이에 필요한 모듈, 파일 시스템, HTTP 등 빌트인(built-in, 내장) API를 제공한다.\n\n클라이언트 사이드와 서버 사이드클라이언트(사용자)측에서 처리하는 것으로 브라우저에서 처리하는 것을 뜻하며,서버 사이드는 서버(제공자)측에서 처리하는 것으로 클라이언트의 요청을 받아 요청에 대한 내용을 응답하여 전달한다.\n\n\n\n\nNode.js는 non-blocking I&#x2F;O를 지원하며 단일 스레드 이벤트 루프 기반으로 동작하여 요청 처리 성능이 좋다.\n데이터를 실시간 처리하기 위해 I&#x2F;O가 빈번하게 발생하는 SPA(Single Page Application)에 적합하다.\nCPU 사용률이 높은 애플리케이션에는 권장하지 않는다.\n\nnode.js 시작하기공식 홈페이지에서 다운로드하여 설치한다. 이 때 LST버전을 사용하는 것을 추천한다.(최신 버전의 경우 LTS 버전에서 지원하던 내용이 없어지거나 변경되서 오류를 이르킬 수 있다. )\n설치가 끝난 후 터미널에서 node -v를 입력하면 설치 확인을 할 수 있다.\n12node -vv16.9.1(본인이 설치한 버전 표시)\n\n\n\n공식 문서를 참고하여 간단한 서버를 생성할 수 있다.\n","dateCreated":"2022-05-16T20:47:54+09:00","dateModified":"2022-05-17T18:49:19+09:00","datePublished":"2022-05-16T20:47:54+09:00","description":"node.js는 Chrome V8 JavaScript 엔진으로 빌드된 JavaScript 런타임이다.\n\n런타임이란?프로그래밍 언어가 동작하는 환경을 말한다.\n\n브라우저의 JavaScript 엔진에서 동작하는 JavaScript를 브라우저 이외의 환경에서도 동작할 수 있도록하는 실행환경이다.","headline":"node.js란?","image":[null,"nodejs.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/"},"publisher":{"@type":"Organization","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg","logo":{"@type":"ImageObject","url":"bigjay.jpg"}},"url":"https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/","keywords":"Front-end, JavaScript, nodejs","thumbnailUrl":"nodejs.png"}</script>
+    <meta name="description" content="node.js는 Chrome V8 JavaScript 엔진으로 빌드된 JavaScript 런타임이다.  런타임이란?프로그래밍 언어가 동작하는 환경을 말한다.  브라우저의 JavaScript 엔진에서 동작하는 JavaScript를 브라우저 이외의 환경에서도 동작할 수 있도록하는 실행환경이다.">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="JavaScript 시작 (4-2) - 할당 연산자">
-<meta property="og:url" content="https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/index.html">
+<meta property="og:title" content="node.js란?">
+<meta property="og:url" content="https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/index.html">
 <meta property="og:site_name" content="BigBoy Club">
-<meta property="og:description" content="할당 연산자는 우항에 있는 피연산자의 평가 결과를 좌할에 있는 변수에 할당하며 좌항의 변수에 값을 할당하므로 변수 값이 변하는 부수 효과가 있다.">
+<meta property="og:description" content="node.js는 Chrome V8 JavaScript 엔진으로 빌드된 JavaScript 런타임이다.  런타임이란?프로그래밍 언어가 동작하는 환경을 말한다.  브라우저의 JavaScript 엔진에서 동작하는 JavaScript를 브라우저 이외의 환경에서도 동작할 수 있도록하는 실행환경이다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="article:published_time" content="2022-05-12T08:22:22.000Z">
-<meta property="article:modified_time" content="2022-05-12T11:59:01.439Z">
+<meta property="article:published_time" content="2022-05-16T11:47:54.000Z">
+<meta property="article:modified_time" content="2022-05-17T09:49:19.149Z">
 <meta property="article:author" content="Jay Park">
 <meta property="article:tag" content="Front-end">
 <meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="operator">
-<meta property="article:tag" content="assignment operator">
+<meta property="article:tag" content="nodejs">
 <meta name="twitter:card" content="summary">
     
     
@@ -38,8 +37,8 @@
     
     
     
-        <meta property="og:image" content="https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/javascript.png"/>
-        <meta class="swiftype" name="image" data-type="enum" content="https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/javascript.png"/>
+        <meta property="og:image" content="https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/nodejs.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/nodejs.png"/>
     
     
     <!--STYLES-->
@@ -249,20 +248,20 @@
         <div class="post-header-cover
                     text-left
                     "
-             style="background-image:url('/2022/05/12/JavaScript-getstart-4-2/javascript.png');"
+             style="background-image:url('/2022/05/16/nodeJS-getStart-1/nodejs.png');"
              data-behavior="4">
             
                 <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            JavaScript 시작 (4-2) - 할당 연산자
+            node.js란?
         </h1>
     
     
         <div class="post-meta">
-    <time datetime="2022-05-12T17:22:22+09:00">
+    <time datetime="2022-05-16T20:47:54+09:00">
 	
-		    2022/05/12
+		    2022/05/16
     	
     </time>
     
@@ -290,77 +289,31 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>할당 연산자는 우항에 있는 피연산자의 평가 결과를 좌할에 있는 변수에 할당하며 좌항의 변수에 값을 할당하므로 변수 값이 변하는 부수 효과가 있다.</p>
+            <p>node.js는 Chrome V8 JavaScript 엔진으로 빌드된 JavaScript 런타임이다.</p>
+<blockquote>
+<p><em>런타임이란?</em><br>프로그래밍 언어가 동작하는 환경을 말한다.</p>
+</blockquote>
+<p>브라우저의 JavaScript 엔진에서 동작하는 JavaScript를 브라우저 이외의 환경에서도 동작할 수 있도록하는 실행환경이다.</p>
 <span id="more"></span>
 
-<br>
-
-<table>
-<thead>
-<tr>
-<th align="center">할당 연산자</th>
-<th><center>예</center></th>
-<th><center>동일 표현</center></th>
-<th align="center">부수 효과</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">&#x3D;</td>
-<td>x &#x3D; 5</td>
-<td>x &#x3D; 5</td>
-<td align="center">O</td>
-</tr>
-<tr>
-<td align="center">+&#x3D;</td>
-<td>x +&#x3D; 5</td>
-<td>x &#x3D; x + 5</td>
-<td align="center">O</td>
-</tr>
-<tr>
-<td align="center">-&#x3D;</td>
-<td>x -&#x3D; 5</td>
-<td>x &#x3D; x - 5</td>
-<td align="center">O</td>
-</tr>
-<tr>
-<td align="center">*&#x3D;</td>
-<td>x *&#x3D; 5</td>
-<td>x &#x3D; x * 5</td>
-<td align="center">O</td>
-</tr>
-<tr>
-<td align="center">&#x2F;&#x3D;</td>
-<td>x &#x2F;&#x3D; 5</td>
-<td>x &#x3D; x &#x2F; 5</td>
-<td align="center">O</td>
-</tr>
-<tr>
-<td align="center">%&#x3D;</td>
-<td>x %&#x3D; 5</td>
-<td>x &#x3D; x % 5</td>
-<td align="center">O</td>
-</tr>
-</tbody></table>
-<br>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">x += <span class="number">5</span>; <span class="comment">// 15</span></span><br><span class="line">x -= <span class="number">5</span>; <span class="comment">// 10</span></span><br><span class="line">x *= <span class="number">5</span>; <span class="comment">// 50</span></span><br><span class="line">x /= <span class="number">5</span>; <span class="comment">// 10</span></span><br><span class="line">x %= <span class="number">5</span>; <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="❗️-할당문은-표현식인-문일까-표현식이-아닌-문일까"><a href="#❗️-할당문은-표현식인-문일까-표현식이-아닌-문일까" class="headerlink" title="❗️ 할당문은 표현식인 문일까? 표현식이 아닌 문일까?"></a>❗️ 할당문은 표현식인 문일까? 표현식이 아닌 문일까?</h4><blockquote>
-<p><strong>표현식</strong><br>값으로 평가될 수 있는 문으로 표현식이 평가되면 새로운 값을 생성하거나 기존 값을 참조한다.</p>
-</blockquote>
-<br>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 할당문은 표현식인 문이다.</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>((x = <span class="number">10</span>)); <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
-
-<p>할당문은 변수에 값을 할당하는 부수 효과만 있을 뿐 값으로 평가되지 않을 것 처럼 보이지만 <code>값으로 평가되는 표현식인 문으로서 할당된 값으로 평가</code>된다.</p>
-<br>
-
-<p>이러한 특징을 활용하여 여러 변수에 동일한 값을 연쇄 할당도 가능하다.<br><br></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a, b, c;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 연쇄 할당</span></span><br><span class="line">a = b = c = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c); <span class="comment">// 0 0 0</span></span><br></pre></td></tr></table></figure>
-
+<p>다양한 플랫폼에 적용할 수 있지만 서버 사이드 애플리케이션 개발에 주로 사용되며, 이에 필요한 모듈, 파일 시스템, HTTP 등 빌트인(built-in, 내장) API를 제공한다.</p>
 <blockquote>
-<p><strong>연쇄 할당</strong><br>① c &#x3D; 0 <em>0으로 평가된다.</em><br>② b &#x3D; 0 <em>0으로 평가된다.</em><br>③ a &#x3D; 0 <em>0으로 평가된다.</em></p>
+<p>클라이언트 사이드와 서버 사이드<br>클라이언트(사용자)측에서 처리하는 것으로 브라우저에서 처리하는 것을 뜻하며,<br>서버 사이드는 서버(제공자)측에서 처리하는 것으로 클라이언트의 요청을 받아 요청에 대한 내용을 응답하여 전달한다.</p>
 </blockquote>
+<br>
+
+<ul>
+<li>Node.js는 non-blocking I&#x2F;O를 지원하며 단일 스레드 이벤트 루프 기반으로 동작하여 요청 처리 성능이 좋다.</li>
+<li>데이터를 실시간 처리하기 위해 I&#x2F;O가 빈번하게 발생하는 SPA(Single Page Application)에 적합하다.</li>
+<li>CPU 사용률이 높은 애플리케이션에는 권장하지 않는다.</li>
+</ul>
+<h2 id="node-js-시작하기"><a href="#node-js-시작하기" class="headerlink" title="node.js 시작하기"></a>node.js 시작하기</h2><p><a target="_blank" rel="noopener" href="https://nodejs.org/ko/">공식 홈페이지</a>에서 다운로드하여 설치한다. 이 때 LST버전을 사용하는 것을 추천한다.<br>(최신 버전의 경우 LTS 버전에서 지원하던 내용이 없어지거나 변경되서 오류를 이르킬 수 있다. )</p>
+<p>설치가 끝난 후 터미널에서 node -v를 입력하면 설치 확인을 할 수 있다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">v16.9.1(본인이 설치한 버전 표시)</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/ko/docs/guides/getting-started-guide/">공식 문서</a>를 참고하여 간단한 서버를 생성할 수 있다.</p>
 
             
 
@@ -372,7 +325,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">태그</span><br/>
                 
-    <a class="tag tag--primary tag--small t-none-link" href="/tags/Front-end/" rel="tag">Front-end</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/assignment-operator/" rel="tag">assignment operator</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/operator/" rel="tag">operator</a>
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Front-end/" rel="tag">Front-end</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/nodejs/" rel="tag">nodejs</a>
 
             </div>
         
@@ -382,14 +335,11 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2022/05/16/nodeJS-getStart-1/"
-                    data-tooltip="node.js란?"
-                    aria-label="이전: node.js란?"
-                >
-                    
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
                     </a>
@@ -399,9 +349,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2022/05/03/JavaScript-getstart-4/"
-                    data-tooltip="JavaScript 시작 (4-1) - 연산자 (산술 연산자)"
-                    aria-label="다음: JavaScript 시작 (4-1) - 연산자 (산술 연산자)"
+                    href="/2022/05/12/JavaScript-getstart-4-2/"
+                    data-tooltip="JavaScript 시작 (4-2) - 할당 연산자"
+                    aria-label="다음: JavaScript 시작 (4-2) - 할당 연산자"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">다음</span>
@@ -426,7 +376,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/"
                     title="Facebook에 공유하기"
                     aria-label="Facebook에 공유하기"
                 >
@@ -439,7 +389,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/"
                     title="Twitter에 공유하기"
                     aria-label="Twitter에 공유하기"
                 >
@@ -452,7 +402,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/"
                     title="Google+에 공유하기"
                     aria-label="Google+에 공유하기"
                 >
@@ -497,14 +447,11 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    
-                <a
-                    class="post-action-btn btn btn--default tooltip--top"
-                    href="/2022/05/16/nodeJS-getStart-1/"
-                    data-tooltip="node.js란?"
-                    aria-label="이전: node.js란?"
-                >
-                    
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
                     </a>
@@ -514,9 +461,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/2022/05/03/JavaScript-getstart-4/"
-                    data-tooltip="JavaScript 시작 (4-1) - 연산자 (산술 연산자)"
-                    aria-label="다음: JavaScript 시작 (4-1) - 연산자 (산술 연산자)"
+                    href="/2022/05/12/JavaScript-getstart-4-2/"
+                    data-tooltip="JavaScript 시작 (4-2) - 할당 연산자"
+                    aria-label="다음: JavaScript 시작 (4-2) - 할당 연산자"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">다음</span>
@@ -541,7 +488,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/"
                     title="Facebook에 공유하기"
                     aria-label="Facebook에 공유하기"
                 >
@@ -554,7 +501,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/"
                     title="Twitter에 공유하기"
                     aria-label="Twitter에 공유하기"
                 >
@@ -567,7 +514,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/"
                     title="Google+에 공유하기"
                     aria-label="Google+에 공유하기"
                 >
@@ -601,7 +548,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/"
                         aria-label="Facebook에 공유하기"
                     >
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
@@ -614,7 +561,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/"
+                        href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/"
                         aria-label="Twitter에 공유하기"
                     >
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
@@ -627,7 +574,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/"
+                        href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/"
                         aria-label="Google+에 공유하기"
                     >
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
