@@ -6,23 +6,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="BigBoy Club">
-    <title>아카이브: 2022 - BigBoy Club</title>
+    <title>node.js로 웹 서버 만들어보기 - 2 - BigBoy Club</title>
     <meta name="author" content="Jay Park">
     
     
         <link rel="icon" href="https://jayone12.github.io/assets/images/bigjay.jpg">
     
     
-    <script type="application/ld+json">{}</script>
-    <meta name="description" content="welcome to BigBoy Club">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg"},"articleBody":"Node.js서버에서 Router 만들기웹페이지에서 사용자가 취하는 행동에 따라서 클라이언트가 서버에 url 주소를 요청하고 그 주소에 맞게 서버는 해당 데이터를 응답하게 된다.\n예) youtube.com\n\n유튜브 공식 사이트를 보면 url 주소는 위와 같이 나온다. 여기서 메뉴를 누르거나 혹은 검색을 하면 위 url이 변경되면서 사이트가 이동되는것을 확인할 수 있다.\n메뉴 탐색을 눌렀을때\n메뉴 구독을 눌렀을때\n검색을 했을 때\n\n\n\nURL이란?Uniform Resource Locator 또는 통칭 web address로 네트워크 상에서 자원이 어디 있는지 알려주는 규약 즉, 컴퓨터 네트워크와 검색 메커니즘에서의 위치를 지정하는, 웹 리소스에 대한 참조이다.- 참고: 위키백과\n\nhttp또는 https는 프로토콜중 하나로 웹 브라우저에서 이용할 수 있는 프로토콜이며 :&#x2F;&#x2F; 뒤에는 해당 웹사이트의 도메인 주소이다.\n\n\n1. 사용자가 브라우저 주소창에 입력한 값 알아보기&#x2F;는 최상단 root을 뜻하며 보통 생략되기도 한다.클라이언트가 요청시 무엇을 받는지 console로 확인해 본다.\n1234567891011const http = require(&quot;http&quot;);const server = http.createServer((req, res) =&gt; &#123;  // req를 콘솔로 무엇을 요청 받는지 확인해 본다.  console.log(req);  res.end(&quot;안녕 node js!&quot;);&#125;);server.listen(3000, () =&gt; &#123;  console.log(`서버가 실행되었습니다.!`);&#125;);\n\n위와 같이 입력 후 node [파일명]으로 실행해 보면 아래와 같은 정보를 알 수 있다.\n\n해당 내용은 브라우저 주소창에 사용자가 입력한 경로를 표시해준다.\nnodejs 참조\n\n\n2. &#x2F;와 &#x2F;login 요청시 응답하기위에서 확인한 url로 요청에 대한 응답을 할 수 있다.\n123456789101112131415const http = require(&quot;http&quot;);const server = http.createServer((req, res) =&gt; &#123;  if (req.url === &quot;/&quot;) &#123;    res.setHeader(&quot;content-type&quot;, &quot;text/html; charset=utf-8&quot;);    res.end(&quot;홈입니다.&quot;);  &#125; else if (req.url === &quot;/login&quot;) &#123;    res.setHeader(&quot;content-type&quot;, &quot;text/html; charset=utf-8&quot;);    res.end(&quot;login 입니다.&quot;);  &#125;&#125;);server.listen(3000, () =&gt; &#123;  console.log(`서버가 실행되었습니다.!`);&#125;);\n\n3. 각 url에 따른 페이지 만들기123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354const homeTemplate = `  &lt;!DOCTYPE html&gt;&lt;html lang=&quot;ko&quot;&gt;  &lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot; /&gt;    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;    &lt;title&gt;Document&lt;/title&gt;  &lt;/head&gt;  &lt;body&gt;    &lt;nav&gt;      &lt;ul&gt;        &lt;li&gt;          &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;        &lt;/li&gt;        &lt;li&gt;          &lt;a href=&quot;/login&quot;&gt;Login&lt;/a&gt;        &lt;/li&gt;      &lt;ul&gt;    &lt;/nav&gt;    &lt;h1&gt;홈 입니다.&lt;/h1&gt;  &lt;/body&gt;&lt;/html&gt;`;const loginTemplate = `  &lt;!DOCTYPE html&gt;&lt;html lang=&quot;ko&quot;&gt;  &lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot; /&gt;    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;    &lt;title&gt;Document&lt;/title&gt;  &lt;/head&gt;  &lt;body&gt;    &lt;nav&gt;      &lt;ul&gt;        &lt;li&gt;          &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;        &lt;/li&gt;        &lt;li&gt;          &lt;a href=&quot;/login&quot;&gt;Login&lt;/a&gt;        &lt;/li&gt;      &lt;ul&gt;    &lt;/nav&gt;    &lt;h1&gt;Log In&lt;/h1&gt;    &lt;form&gt;      &lt;input type=&quot;text&quot; placeholder=&quot;ID를 입력하세요&quot; /&gt;      &lt;input type=&quot;password&quot; placeholder=&quot;password를 입력하세요.&quot; /&gt;      &lt;input type=&quot;submit&quot; value=&quot;로그인&quot;/&gt;    &lt;/form&gt;  &lt;/body&gt;&lt;/html&gt;`;\n\n4. 적용하기123456789101112131415161718192021222324const server = http.createServer((req, res) =&gt; &#123;  if (req.url === &quot;/&quot;) &#123;    res.setHeader(&quot;content-type&quot;, &quot;text/html; charset=utf-8&quot;);    // 아래와 같이 수정    res.end(homeTemplate);  &#125;  if (req.url === &quot;/login&quot;) &#123;    res.setHeader(&quot;content-type&quot;, &quot;text/html; charset=utf-8&quot;);    // 아래와 같이 수정    res.end(loginTemplate);  &#125;&#125;);const homeTemplate = `\t...`;const loginTemplate = `\t...`;server.listen(3000, () =&gt; &#123;  console.log(`서버가 실행되었습니다.!`);&#125;);\n","dateCreated":"2022-05-25T16:58:28+09:00","dateModified":"2022-05-25T17:33:53+09:00","datePublished":"2022-05-25T16:58:28+09:00","description":"","headline":"node.js로 웹 서버 만들어보기 - 2","image":[null,"nodejs.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/"},"publisher":{"@type":"Organization","name":"Jay Park","sameAs":["https://github.com/Jayone12","https://www.linkedin.com/in/park-jaewon-36282615a/"],"image":"bigjay.jpg","logo":{"@type":"ImageObject","url":"bigjay.jpg"}},"url":"https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/","keywords":"Front-end, JavaScript, nodejs","thumbnailUrl":"nodejs.png"}</script>
+    <meta name="description" content="Node.js서버에서 Router 만들기웹페이지에서 사용자가 취하는 행동에 따라서 클라이언트가 서버에 url 주소를 요청하고 그 주소에 맞게 서버는 해당 데이터를 응답하게 된다. 예) youtube.com  유튜브 공식 사이트를 보면 url 주소는 위와 같이 나온다. 여기서 메뉴를 누르거나 혹은 검색을 하면 위 url이 변경되면서 사이트가 이동되는것을 확인">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="BigBoy Club">
-<meta property="og:url" content="https://jayone12.github.io/archives/2022/index.html">
+<meta property="og:title" content="node.js로 웹 서버 만들어보기 - 2">
+<meta property="og:url" content="https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/index.html">
 <meta property="og:site_name" content="BigBoy Club">
-<meta property="og:description" content="welcome to BigBoy Club">
+<meta property="og:description" content="Node.js서버에서 Router 만들기웹페이지에서 사용자가 취하는 행동에 따라서 클라이언트가 서버에 url 주소를 요청하고 그 주소에 맞게 서버는 해당 데이터를 응답하게 된다. 예) youtube.com  유튜브 공식 사이트를 보면 url 주소는 위와 같이 나온다. 여기서 메뉴를 누르거나 혹은 검색을 하면 위 url이 변경되면서 사이트가 이동되는것을 확인">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://jayone12.github.io/nodeJS-getStart-3/1.png">
+<meta property="og:image" content="https://jayone12.github.io/nodeJS-getStart-3/2.png">
+<meta property="og:image" content="https://jayone12.github.io/nodeJS-getStart-3/3.png">
+<meta property="og:image" content="https://jayone12.github.io/nodeJS-getStart-3/4.png">
+<meta property="og:image" content="https://jayone12.github.io/nodeJS-getStart-3/5.png">
+<meta property="article:published_time" content="2022-05-25T07:58:28.000Z">
+<meta property="article:modified_time" content="2022-05-25T08:33:53.185Z">
 <meta property="article:author" content="Jay Park">
+<meta property="article:tag" content="Front-end">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="nodejs">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jayone12.github.io/nodeJS-getStart-3/1.png">
     
     
         
@@ -31,6 +42,9 @@
         <meta property="og:image" content="https://jayone12.github.io/assets/images/bigjay.jpg"/>
     
     
+    
+        <meta property="og:image" content="https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/nodejs.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/nodejs.png"/>
     
     
     <!--STYLES-->
@@ -42,6 +56,8 @@
 
     
 
+    
+        
     
 </head>
 
@@ -56,7 +72,7 @@
         
     
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a
@@ -89,7 +105,7 @@
         
     
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -235,30 +251,20 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
-                 class="
-                        hasCoverMetaIn
-                        ">
-                
-    <section class="postShorten-group main-content-wrap">
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
+        <div class="post-header-cover
+                    text-left
+                    "
+             style="background-image:url('/2022/05/25/nodeJS-getStart-3/nodejs.png');"
+             data-behavior="4">
             
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2022/05/25/nodeJS-getStart-3/"
-                            aria-label=": node.js로 웹 서버 만들어보기 - 2"
-                        >
-                            node.js로 웹 서버 만들어보기 - 2
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
+                <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            node.js로 웹 서버 만들어보기 - 2
+        </h1>
+    
+    
+        <div class="post-meta">
     <time datetime="2022-05-25T16:58:28+09:00">
 	
 		    2022/05/25
@@ -273,10 +279,23 @@
     
 </div>
 
-            </div>
+    
+</div>
+
             
-                <div class="postShorten-content">
-                    <h2 id="Node-js서버에서-Router-만들기"><a href="#Node-js서버에서-Router-만들기" class="headerlink" title="Node.js서버에서 Router 만들기"></a>Node.js서버에서 Router 만들기</h2><p>웹페이지에서 사용자가 취하는 행동에 따라서 클라이언트가 서버에 url 주소를 요청하고 그 주소에 맞게 서버는 해당 데이터를 응답하게 된다.</p>
+        </div>
+
+            <div id="main" data-behavior="4"
+                 class="hasCover
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h2 id="Node-js서버에서-Router-만들기"><a href="#Node-js서버에서-Router-만들기" class="headerlink" title="Node.js서버에서 Router 만들기"></a>Node.js서버에서 Router 만들기</h2><p>웹페이지에서 사용자가 취하는 행동에 따라서 클라이언트가 서버에 url 주소를 요청하고 그 주소에 맞게 서버는 해당 데이터를 응답하게 된다.</p>
 <p>예) youtube.com</p>
 <p><img src="/./nodeJS-getStart-3/1.png" alt="url 예시"></p>
 <p>유튜브 공식 사이트를 보면 url 주소는 위와 같이 나온다. 여기서 메뉴를 누르거나 혹은 검색을 하면 위 url이 변경되면서 사이트가 이동되는것을 확인할 수 있다.</p>
@@ -307,611 +326,121 @@
 
 <h3 id="4-적용하기"><a href="#4-적용하기" class="headerlink" title="4. 적용하기"></a>4. 적용하기</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (req.<span class="property">url</span> === <span class="string">&quot;/&quot;</span>) &#123;</span><br><span class="line">    res.<span class="title function_">setHeader</span>(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;text/html; charset=utf-8&quot;</span>);</span><br><span class="line">    <span class="comment">// 아래와 같이 수정</span></span><br><span class="line">    res.<span class="title function_">end</span>(homeTemplate);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (req.<span class="property">url</span> === <span class="string">&quot;/login&quot;</span>) &#123;</span><br><span class="line">    res.<span class="title function_">setHeader</span>(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;text/html; charset=utf-8&quot;</span>);</span><br><span class="line">    <span class="comment">// 아래와 같이 수정</span></span><br><span class="line">    res.<span class="title function_">end</span>(loginTemplate);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> homeTemplate = <span class="string">`</span></span><br><span class="line"><span class="string">	...</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> loginTemplate = <span class="string">`</span></span><br><span class="line"><span class="string">	...</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`서버가 실행되었습니다.!`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/2022/05/25/nodeJS-getStart-3/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
             
+
+
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-            <a
-                href="/2022/05/25/nodeJS-getStart-3/"
-                aria-label=": node.js로 웹 서버 만들어보기 - 2"
-            >
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/nodejs.png"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2022/05/18/nodeJS-getStart-2/"
-                            aria-label=": node.js로 웹 서버 만들어보기 - 1"
-                        >
-                            node.js로 웹 서버 만들어보기 - 1
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2022-05-18T10:32:06+09:00">
-	
-		    2022/05/18
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
-
-
-    
-</div>
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">태그</span><br/>
+                
+    <a class="tag tag--primary tag--small t-none-link" href="/tags/Front-end/" rel="tag">Front-end</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a> <a class="tag tag--primary tag--small t-none-link" href="/tags/nodejs/" rel="tag">nodejs</a>
 
             </div>
-            
-                <div class="postShorten-excerpt">
-                    <p>node.js 공식 페이지를 보면 아래와 같이 예제 소스가 나와있다.</p>
-                    
-                        <a
-                            href="/2022/05/18/nodeJS-getStart-2/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": node.js로 웹 서버 만들어보기 - 1"
-                        >
-                            계속 읽기
-                        </a>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
                         
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
                     
-                </div>
-            
-        </div>
-        
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/05/18/nodeJS-getStart-2/"
+                    data-tooltip="node.js로 웹 서버 만들어보기 - 1"
+                    aria-label="다음: node.js로 웹 서버 만들어보기 - 1"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
             <a
-                href="/2022/05/18/nodeJS-getStart-2/"
-                aria-label=": node.js로 웹 서버 만들어보기 - 1"
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="이 포스트 공유하기"
             >
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="https://jayone12.github.io/2022/05/18/nodeJS-getStart-2/nodejs.png"/>
-                </div>
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/"
+                    title="Facebook에 공유하기"
+                    aria-label="Facebook에 공유하기"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/"
+                    title="Twitter에 공유하기"
+                    aria-label="Twitter에 공유하기"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/"
+                    title="Google+에 공유하기"
+                    aria-label="Google+에 공유하기"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
             
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left">
-        <div class="postShorten-wrap">
+        <li class="post-action">
             
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2022/05/16/nodeJS-getStart-1/"
-                            aria-label=": node.js란?"
-                        >
-                            node.js란?
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2022-05-16T20:47:54+09:00">
-	
-		    2022/05/16
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
-
-
-    
-</div>
-
-            </div>
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
             
-                <div class="postShorten-excerpt">
-                    <p>node.js는 Chrome V8 JavaScript 엔진으로 빌드된 JavaScript 런타임이다.</p>
-<blockquote>
-<p><em>런타임이란?</em><br>프로그래밍 언어가 동작하는 환경을 말한다.</p>
-</blockquote>
-<p>브라우저의 JavaScript 엔진에서 동작하는 JavaScript를 브라우저 이외의 환경에서도 동작할 수 있도록하는 실행환경이다.</p>
-                    
-                        <a
-                            href="/2022/05/16/nodeJS-getStart-1/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": node.js란?"
-                        >
-                            계속 읽기
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a
-                href="/2022/05/16/nodeJS-getStart-1/"
-                aria-label=": node.js란?"
-            >
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="https://jayone12.github.io/2022/05/16/nodeJS-getStart-1/nodejs.png"/>
-                </div>
+                <i class="fa fa-list" aria-hidden="true"></i>
             </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2022/05/12/JavaScript-getstart-4-2/"
-                            aria-label=": JavaScript 시작 (4-2) - 할당 연산자"
-                        >
-                            JavaScript 시작 (4-2) - 할당 연산자
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2022-05-12T17:22:22+09:00">
-	
-		    2022/05/12
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt">
-                    <p>할당 연산자는 우항에 있는 피연산자의 평가 결과를 좌할에 있는 변수에 할당하며 좌항의 변수에 값을 할당하므로 변수 값이 변하는 부수 효과가 있다.</p>
-                    
-                        <a
-                            href="/2022/05/12/JavaScript-getstart-4-2/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": JavaScript 시작 (4-2) - 할당 연산자"
-                        >
-                            계속 읽기
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a
-                href="/2022/05/12/JavaScript-getstart-4-2/"
-                aria-label=": JavaScript 시작 (4-2) - 할당 연산자"
-            >
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="https://jayone12.github.io/2022/05/12/JavaScript-getstart-4-2/javascript.png"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2022/05/03/JavaScript-getstart-4/"
-                            aria-label=": JavaScript 시작 (4-1) - 연산자 (산술 연산자)"
-                        >
-                            JavaScript 시작 (4-1) - 연산자 (산술 연산자)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2022-05-03T16:50:44+09:00">
-	
-		    2022/05/03
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt">
-                    <h3 id="연산자"><a href="#연산자" class="headerlink" title="연산자"></a>연산자</h3><p>하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산 등을 수행해 하나의 값을 만든다. 이때 연산의 대상을 피연산자라 하며, 연산자는 값으로 평가된 피연산자를 연산해 새로운 값을 만든다.</p>
-                    
-                        <a
-                            href="/2022/05/03/JavaScript-getstart-4/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": JavaScript 시작 (4-1) - 연산자 (산술 연산자)"
-                        >
-                            계속 읽기
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a
-                href="/2022/05/03/JavaScript-getstart-4/"
-                aria-label=": JavaScript 시작 (4-1) - 연산자 (산술 연산자)"
-            >
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="https://jayone12.github.io/2022/05/03/JavaScript-getstart-4/javascript.png"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2022/05/02/JavaScript-getstart-3-8/"
-                            aria-label=": JavaScript 시작 (3-8) - 동적 타이핑"
-                        >
-                            JavaScript 시작 (3-8) - 동적 타이핑
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2022-05-02T10:38:34+09:00">
-	
-		    2022/05/02
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt">
-                    <h3 id="1-정적-타입"><a href="#1-정적-타입" class="headerlink" title="1. 정적 타입"></a>1. 정적 타입</h3><p>모든 값은 데이터 타입을 갖는데 변수는 데이터 타입을 가질까?<br>C나 자바 같은 정적 타입 언어는 변수를 선언 할 때 변수의 할당 할 수 있는 값의 종류를 사전에 선언해야하는데 이를 명시적 타입 선언이라고 한다.</p>
-                    
-                        <a
-                            href="/2022/05/02/JavaScript-getstart-3-8/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": JavaScript 시작 (3-8) - 동적 타이핑"
-                        >
-                            계속 읽기
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a
-                href="/2022/05/02/JavaScript-getstart-3-8/"
-                aria-label=": JavaScript 시작 (3-8) - 동적 타이핑"
-            >
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="https://jayone12.github.io/2022/05/02/JavaScript-getstart-3-8/javascript.png"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2022/05/01/JavaScript-getstart-3-7/"
-                            aria-label=": JavaScript 시작 (3-7) - 데이터 타입의 필요성"
-                        >
-                            JavaScript 시작 (3-7) - 데이터 타입의 필요성
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2022-05-01T22:39:01+09:00">
-	
-		    2022/05/01
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt">
-                    <h3 id="1-데이터-타입에-의한-메모리-공간의-확보와-참조"><a href="#1-데이터-타입에-의한-메모리-공간의-확보와-참조" class="headerlink" title="1. 데이터 타입에 의한 메모리 공간의 확보와 참조"></a>1. 데이터 타입에 의한 메모리 공간의 확보와 참조</h3><p>값은 메모리에 저장하고 참좋할 수 있어야 한다. 몇 바이트의 메모리 공간을 사용해야 낭비와 손실 없이 값을 저장할 수 있는지 알아야 한다.</p>
-                    
-                        <a
-                            href="/2022/05/01/JavaScript-getstart-3-7/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": JavaScript 시작 (3-7) - 데이터 타입의 필요성"
-                        >
-                            계속 읽기
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a
-                href="/2022/05/01/JavaScript-getstart-3-7/"
-                aria-label=": JavaScript 시작 (3-7) - 데이터 타입의 필요성"
-            >
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="https://jayone12.github.io/2022/05/01/JavaScript-getstart-3-7/javascript.png"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2022/04/30/JavaScript-getstart-3-6/"
-                            aria-label=": JavaScript 시작 (3-6) - 원시 타입의 원시 값"
-                        >
-                            JavaScript 시작 (3-6) - 원시 타입의 원시 값
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2022-04-30T09:45:51+09:00">
-	
-		    2022/04/30
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt">
-                    <p>자바스크립트의 데이터 타입은 크게 원시 타입과 객체 타입으로 분류된다. 자바스크립트는 객체 기반의 언어이며, 자바스크립트를 이루고 있는 거의 모든 것이 객체다.<br>숫자, 문자열, boolean, undefined, null, symbol 타입을 제외한 값은 모두 객체 타입(object type)이다.</p>
-                    
-                        <a
-                            href="/2022/04/30/JavaScript-getstart-3-6/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": JavaScript 시작 (3-6) - 원시 타입의 원시 값"
-                        >
-                            계속 읽기
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a
-                href="/2022/04/30/JavaScript-getstart-3-6/"
-                aria-label=": JavaScript 시작 (3-6) - 원시 타입의 원시 값"
-            >
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="https://jayone12.github.io/2022/04/30/JavaScript-getstart-3-6/javascript.png"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2022/04/29/JavaScript-getstart-3-5/"
-                            aria-label=": JavaScript 시작 (3-5) - undefinded 타입과 null 타입"
-                        >
-                            JavaScript 시작 (3-5) - undefinded 타입과 null 타입
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2022-04-29T16:15:39+09:00">
-	
-		    2022/04/29
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt">
-                    <h3 id="undefined-타입"><a href="#undefined-타입" class="headerlink" title="undefined 타입"></a>undefined 타입</h3><p>undefined 값 하나만 존재하며, 선언된 변수의 값이 할당되어 있지 않으면 undefined를 반환한다.</p>
-                    
-                        <a
-                            href="/2022/04/29/JavaScript-getstart-3-5/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": JavaScript 시작 (3-5) - undefinded 타입과 null 타입"
-                        >
-                            계속 읽기
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a
-                href="/2022/04/29/JavaScript-getstart-3-5/"
-                aria-label=": JavaScript 시작 (3-5) - undefinded 타입과 null 타입"
-            >
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-5/javascript.png"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2022/04/29/JavaScript-getstart-3-4/"
-                            aria-label=": JavaScript 시작 (3-4) - 불리언 타입(boolean type)"
-                        >
-                            JavaScript 시작 (3-4) - 불리언 타입(boolean type)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2022-04-29T15:21:00+09:00">
-	
-		    2022/04/29
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt">
-                    <p>값은 참과 거짓을 나타내는 <code>true</code>, <code>false</code>뿐이다.</p>
-                    
-                        <a
-                            href="/2022/04/29/JavaScript-getstart-3-4/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": JavaScript 시작 (3-4) - 불리언 타입(boolean type)"
-                        >
-                            계속 읽기
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a
-                href="/2022/04/29/JavaScript-getstart-3-4/"
-                aria-label=": JavaScript 시작 (3-4) - 불리언 타입(boolean type)"
-            >
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-4/javascript.png"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
-        
-        
-          <li class="pagination-next">
-            <a
-                class="btn btn--default btn--small"
-                href="/archives/2022/page/2/"
-                aria-label="이전 포스트"
-            >
-              <span>이전 포스트</span>
-              <i class="fa fa-angle-right text-base icon-ml"></i>
-            </a>
-          </li>
-        
-        <li class="pagination-number">page 1 of 2</li>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+        
+            
+        
+    </div>
+</article>
 
 
 
@@ -922,6 +451,151 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a
+                        class="post-action-btn btn btn--disabled"
+                        aria-hidden="true"
+                    >
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/05/18/nodeJS-getStart-2/"
+                    data-tooltip="node.js로 웹 서버 만들어보기 - 1"
+                    aria-label="다음: node.js로 웹 서버 만들어보기 - 1"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="이 포스트 공유하기"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/"
+                    title="Facebook에 공유하기"
+                    aria-label="Facebook에 공유하기"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/"
+                    title="Twitter에 공유하기"
+                    aria-label="Twitter에 공유하기"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/"
+                    title="Google+에 공유하기"
+                    aria-label="Google+에 공유하기"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/"
+                        aria-label="Facebook에 공유하기"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/"
+                        aria-label="Twitter에 공유하기"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://plus.google.com/share?url=https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/"
+                        aria-label="Google+에 공유하기"
+                    >
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
             
         </div>
         
@@ -965,6 +639,8 @@
 
 <!--SCRIPTS END-->
 
+
+    
 
 
 

@@ -243,6 +243,103 @@
     <section class="postShorten-group main-content-wrap">
     
     
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/2022/05/25/nodeJS-getStart-3/"
+                            aria-label=": node.js로 웹 서버 만들어보기 - 2"
+                        >
+                            node.js로 웹 서버 만들어보기 - 2
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2022-05-25T16:58:28+09:00">
+	
+		    2022/05/25
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h2 id="Node-js서버에서-Router-만들기"><a href="#Node-js서버에서-Router-만들기" class="headerlink" title="Node.js서버에서 Router 만들기"></a>Node.js서버에서 Router 만들기</h2><p>웹페이지에서 사용자가 취하는 행동에 따라서 클라이언트가 서버에 url 주소를 요청하고 그 주소에 맞게 서버는 해당 데이터를 응답하게 된다.</p>
+<p>예) youtube.com</p>
+<p><img src="/./nodeJS-getStart-3/1.png" alt="url 예시"></p>
+<p>유튜브 공식 사이트를 보면 url 주소는 위와 같이 나온다. 여기서 메뉴를 누르거나 혹은 검색을 하면 위 url이 변경되면서 사이트가 이동되는것을 확인할 수 있다.</p>
+<p><img src="/./nodeJS-getStart-3/2.png" alt="url 예시"><br>메뉴 탐색을 눌렀을때</p>
+<p><img src="/./nodeJS-getStart-3/3.png" alt="url 예시"><br>메뉴 구독을 눌렀을때</p>
+<p><img src="/./nodeJS-getStart-3/4.png" alt="url 예시"><br>검색을 했을 때</p>
+<br>
+
+<blockquote>
+<p><em>URL이란?</em><br>Uniform Resource Locator 또는 통칭 web address로 네트워크 상에서 자원이 어디 있는지 알려주는 규약 즉, 컴퓨터 네트워크와 검색 메커니즘에서의 위치를 지정하는, 웹 리소스에 대한 참조이다.<br>- 참고: <a target="_blank" rel="noopener" href="https://ko.wikipedia.org/wiki/URL">위키백과</a></p>
+</blockquote>
+<p>http또는 https는 프로토콜중 하나로 웹 브라우저에서 이용할 수 있는 프로토콜이며 :&#x2F;&#x2F; 뒤에는 해당 웹사이트의 도메인 주소이다.</p>
+<br>
+
+<h3 id="1-사용자가-브라우저-주소창에-입력한-값-알아보기"><a href="#1-사용자가-브라우저-주소창에-입력한-값-알아보기" class="headerlink" title="1. 사용자가 브라우저 주소창에 입력한 값 알아보기"></a>1. 사용자가 브라우저 주소창에 입력한 값 알아보기</h3><p>&#x2F;는 최상단 root을 뜻하며 보통 생략되기도 한다.<br>클라이언트가 요청시 무엇을 받는지 console로 확인해 본다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// req를 콘솔로 무엇을 요청 받는지 확인해 본다.</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(req);</span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&quot;안녕 node js!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`서버가 실행되었습니다.!`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 입력 후 node [파일명]으로 실행해 보면 아래와 같은 정보를 알 수 있다.</p>
+<p><img src="/./nodeJS-getStart-3/5.png" alt="url 경로"></p>
+<p>해당 내용은 브라우저 주소창에 사용자가 입력한 경로를 표시해준다.</p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/ko/docs/guides/anatomy-of-an-http-transaction/">nodejs 참조</a></p>
+<br>
+
+<h3 id="2-x2F-와-x2F-login-요청시-응답하기"><a href="#2-x2F-와-x2F-login-요청시-응답하기" class="headerlink" title="2. &#x2F;와 &#x2F;login 요청시 응답하기"></a>2. &#x2F;와 &#x2F;login 요청시 응답하기</h3><p>위에서 확인한 url로 요청에 대한 응답을 할 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (req.<span class="property">url</span> === <span class="string">&quot;/&quot;</span>) &#123;</span><br><span class="line">    res.<span class="title function_">setHeader</span>(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;text/html; charset=utf-8&quot;</span>);</span><br><span class="line">    res.<span class="title function_">end</span>(<span class="string">&quot;홈입니다.&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (req.<span class="property">url</span> === <span class="string">&quot;/login&quot;</span>) &#123;</span><br><span class="line">    res.<span class="title function_">setHeader</span>(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;text/html; charset=utf-8&quot;</span>);</span><br><span class="line">    res.<span class="title function_">end</span>(<span class="string">&quot;login 입니다.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`서버가 실행되었습니다.!`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-각-url에-따른-페이지-만들기"><a href="#3-각-url에-따른-페이지-만들기" class="headerlink" title="3. 각 url에 따른 페이지 만들기"></a>3. 각 url에 따른 페이지 만들기</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> homeTemplate = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">&lt;html lang=&quot;ko&quot;&gt;</span></span><br><span class="line"><span class="string">  &lt;head&gt;</span></span><br><span class="line"><span class="string">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</span></span><br><span class="line"><span class="string">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span></span><br><span class="line"><span class="string">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span></span><br><span class="line"><span class="string">    &lt;title&gt;Document&lt;/title&gt;</span></span><br><span class="line"><span class="string">  &lt;/head&gt;</span></span><br><span class="line"><span class="string">  &lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;nav&gt;</span></span><br><span class="line"><span class="string">      &lt;ul&gt;</span></span><br><span class="line"><span class="string">        &lt;li&gt;</span></span><br><span class="line"><span class="string">          &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;</span></span><br><span class="line"><span class="string">        &lt;/li&gt;</span></span><br><span class="line"><span class="string">        &lt;li&gt;</span></span><br><span class="line"><span class="string">          &lt;a href=&quot;/login&quot;&gt;Login&lt;/a&gt;</span></span><br><span class="line"><span class="string">        &lt;/li&gt;</span></span><br><span class="line"><span class="string">      &lt;ul&gt;</span></span><br><span class="line"><span class="string">    &lt;/nav&gt;</span></span><br><span class="line"><span class="string">    &lt;h1&gt;홈 입니다.&lt;/h1&gt;</span></span><br><span class="line"><span class="string">  &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> loginTemplate = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">&lt;html lang=&quot;ko&quot;&gt;</span></span><br><span class="line"><span class="string">  &lt;head&gt;</span></span><br><span class="line"><span class="string">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</span></span><br><span class="line"><span class="string">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span></span><br><span class="line"><span class="string">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span></span><br><span class="line"><span class="string">    &lt;title&gt;Document&lt;/title&gt;</span></span><br><span class="line"><span class="string">  &lt;/head&gt;</span></span><br><span class="line"><span class="string">  &lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;nav&gt;</span></span><br><span class="line"><span class="string">      &lt;ul&gt;</span></span><br><span class="line"><span class="string">        &lt;li&gt;</span></span><br><span class="line"><span class="string">          &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;</span></span><br><span class="line"><span class="string">        &lt;/li&gt;</span></span><br><span class="line"><span class="string">        &lt;li&gt;</span></span><br><span class="line"><span class="string">          &lt;a href=&quot;/login&quot;&gt;Login&lt;/a&gt;</span></span><br><span class="line"><span class="string">        &lt;/li&gt;</span></span><br><span class="line"><span class="string">      &lt;ul&gt;</span></span><br><span class="line"><span class="string">    &lt;/nav&gt;</span></span><br><span class="line"><span class="string">    &lt;h1&gt;Log In&lt;/h1&gt;</span></span><br><span class="line"><span class="string">    &lt;form&gt;</span></span><br><span class="line"><span class="string">      &lt;input type=&quot;text&quot; placeholder=&quot;ID를 입력하세요&quot; /&gt;</span></span><br><span class="line"><span class="string">      &lt;input type=&quot;password&quot; placeholder=&quot;password를 입력하세요.&quot; /&gt;</span></span><br><span class="line"><span class="string">      &lt;input type=&quot;submit&quot; value=&quot;로그인&quot;/&gt;</span></span><br><span class="line"><span class="string">    &lt;/form&gt;</span></span><br><span class="line"><span class="string">  &lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-적용하기"><a href="#4-적용하기" class="headerlink" title="4. 적용하기"></a>4. 적용하기</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (req.<span class="property">url</span> === <span class="string">&quot;/&quot;</span>) &#123;</span><br><span class="line">    res.<span class="title function_">setHeader</span>(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;text/html; charset=utf-8&quot;</span>);</span><br><span class="line">    <span class="comment">// 아래와 같이 수정</span></span><br><span class="line">    res.<span class="title function_">end</span>(homeTemplate);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (req.<span class="property">url</span> === <span class="string">&quot;/login&quot;</span>) &#123;</span><br><span class="line">    res.<span class="title function_">setHeader</span>(<span class="string">&quot;content-type&quot;</span>, <span class="string">&quot;text/html; charset=utf-8&quot;</span>);</span><br><span class="line">    <span class="comment">// 아래와 같이 수정</span></span><br><span class="line">    res.<span class="title function_">end</span>(loginTemplate);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> homeTemplate = <span class="string">`</span></span><br><span class="line"><span class="string">	...</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> loginTemplate = <span class="string">`</span></span><br><span class="line"><span class="string">	...</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`서버가 실행되었습니다.!`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/2022/05/25/nodeJS-getStart-3/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+            <a
+                href="/2022/05/25/nodeJS-getStart-3/"
+                aria-label=": node.js로 웹 서버 만들어보기 - 2"
+            >
+                <div class="postShorten-thumbnailimg">
+                    <img alt="" src="https://jayone12.github.io/2022/05/25/nodeJS-getStart-3/nodejs.png"/>
+                </div>
+            </a>
+            
+        
+    </article>
+    
+    
     <article class="postShorten postShorten--thumbnailimg-left">
         <div class="postShorten-wrap">
             
@@ -789,67 +886,6 @@
             >
                 <div class="postShorten-thumbnailimg">
                     <img alt="" src="https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-4/javascript.png"/>
-                </div>
-            </a>
-            
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-left">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/2022/04/29/JavaScript-getstart-3-3/"
-                            aria-label=": JavaScript 시작 (3-3) - 문자열 타입(string type)"
-                        >
-                            JavaScript 시작 (3-3) - 문자열 타입(string type)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2022-04-29T13:47:21+09:00">
-	
-		    2022/04/29
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/JavsScript/">JavsScript</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt">
-                    <p>텍스트 데이터를 나타내는데 사용하며, 0개 이상의 16비트 유니코드 문자(UTF-16)의 집합으로 전 세계 대부분의 문자 표현이 가능하다.</p>
-                    
-                        <a
-                            href="/2022/04/29/JavaScript-getstart-3-3/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": JavaScript 시작 (3-3) - 문자열 타입(string type)"
-                        >
-                            계속 읽기
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-            <a
-                href="/2022/04/29/JavaScript-getstart-3-3/"
-                aria-label=": JavaScript 시작 (3-3) - 문자열 타입(string type)"
-            >
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" src="https://jayone12.github.io/2022/04/29/JavaScript-getstart-3-3/javascript.png"/>
                 </div>
             </a>
             
